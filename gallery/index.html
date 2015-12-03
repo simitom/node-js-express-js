@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<title> gallery </title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox-buttons.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox-thumbs.css">
+
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-thumbs.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox({
+			helpers:{
+				buttons:{}
+			}
+		});
+
+		$(".filter").on("click",function(){
+			var $this = $(this);
+			if (!$this.hasClass("active")) {
+				$(".filter").removeClass("active");
+				$this.addClass("active");    //set active tab
+				//get data-rel
+				var $filter = $this.data("rel");
+				$filter == "all"?
+				$(".fancybox")
+				.attr("data-fancybox-group","gallery")
+				.not(":visible")
+				.fadeIn()
+				://else
+				$(".fancybox")
+				.fadeOut(0)
+				.filter(function(){
+					return $this.data("filter")== $filter;
+
+				})
+				.attr("data-fancybox-group",$filter)
+				.fadeIn(1000);
+			} //if
+
+		});
+	});
+</script>
+
+</head>
+<body>
+<header class="logo">
+	<!-- <div class="container"> -->
+	<h3>CSS</h3><BR>
+	<h1>Image Gallery</h1>
+	<!-- </div> -->
+</header>
+	<div class="container">
+	<section>
+		<div class="gallery">
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category1" href="images/f1.jpg"><img src="images/f1.jpg" title="game of thrones"></a>
+
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category1" href="images/f2.jpg"><img src="images/f2.jpg" title="harry potter"></a>
+
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category1" href="images/f3.jpg"><img src="images/f3.jpg" title="the longest ride"></a>
+
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category1" href="images/f4.jpeg"><img src="images/f4.jpeg" title="Nothing lasts forever "></a>
+
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category1" href="images/f5.jpeg"><img src="images/f5.jpeg" title ="2 states"></a>
+
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category2" href="images/nf1.jpg"><img src="images/nf1.jpg" title ="wings of fire"></a>
+
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category2" href="images/nf2.jpg"><img src="images/nf2.jpg" title ="moonwalk"></a>
+
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category2" href="images/nf3.jpg"><img src="images/nf3.jpg" title ="Jobs"></a>
+
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category2" href="images/nf4.jpg"><img src="images/nf4.jpg" title ="I am malala"></a>
+
+			<a class="fancybox" data-fancybox-group="gallery" data-filter="category2" href="images/nf5.jpg"><img src="images/nf5.jpg" title ="mein kampf"></a>
+
+
+		</div>
+	</section>
+	 <aside>
+		<nav>
+			<a data-rel="all" href="javascript;" class="active-filter">View All</a>
+			<a data-rel="category1" href="javascript;" class="filter">Fictional </a><br>
+			<a data-rel="category2" href="javascript;" class="filter">Non-fictional</a>
+		</nav>
+	 </aside>
+  </div>
+  <footer>
+  	<div class="container">
+  	<p>Copyright &copy 2015</p>
+  		
+  	</div>
+  </footer>
+</body>
+</html>
